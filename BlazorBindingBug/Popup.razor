@@ -1,0 +1,31 @@
+﻿
+@if (IsOpen)
+{
+    <span>@Name is open</span>
+
+    <button @onclick=Close>Close this</button>
+}
+
+@code {
+
+    bool _isOpen = false;
+
+    [Parameter]
+    public bool IsOpen
+    {
+        get => _isOpen;
+        set => _isOpen = value;
+    }
+
+    [Parameter]
+    public EventCallback<bool> IsOpenChanged { get; set; }
+
+    [Parameter]
+    public string Name { get; set; } = "";
+
+    private void Close()
+    {
+        IsOpen = false;
+        IsOpenChanged.InvokeAsync();
+    }
+}

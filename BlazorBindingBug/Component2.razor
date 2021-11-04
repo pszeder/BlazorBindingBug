@@ -1,0 +1,19 @@
+﻿<h3>Component2</h3>
+
+<Popup Name="Component2" @bind-IsOpen=IsOpen/>
+
+@code {
+
+    bool _isOpen = false;
+
+    [Parameter]
+    public bool IsOpen
+    {
+        get => _isOpen;
+        set => _isOpen = value;
+    }
+
+    [Parameter]
+    public EventCallback<bool> IsOpenChanged { get; set; }
+
+}
